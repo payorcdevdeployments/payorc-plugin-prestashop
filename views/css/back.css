@@ -1,0 +1,82 @@
+/**
+* 2007-2025 PrestaShop
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Academic Free License (AFL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/afl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@prestashop.com so we can send you a copy immediately.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+* versions in the future. If you wish to customize PrestaShop for your
+* needs please refer to http://www.prestashop.com for more information.
+*
+*  @author    PrestaShop SA <contact@prestashop.com>
+*  @copyright 2007-2025 PrestaShop SA
+*  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  International Registered Trademark & Property of PrestaShop SA
+*
+* Don't forget to prefix your containers with your own identifier
+* to avoid any conflicts with others containers.
+*/
+
+.sidebar { width:20% !important;}
+.content-wrap { width:80% !important;}
+.payorc-module-wrapper fieldset{display:none}
+.payorc-module-wrapper fieldset.show{display:block}
+.payorc-module-wrapper { width: 99%;float: left;display: block;position: relative; }
+input.button:hover { cursor: pointer; }
+table.payorc-cc-numbers { border: #CCCED7 solid 1px; background-color: #FFFFFF; }
+table.payorc-cc-numbers th { background-color: #F7FBFF; border-bottom: #CCCED7 solid 1px; padding: 5px 25px 5px 8px; text-align: left; }
+table.payorc-cc-numbers td { border-bottom: #CCCED7 solid 1px; padding: 5px 25px 5px 8px; }
+table.payorc-cc-numbers td.last { border-bottom: none; }
+table.payorc-cc-numbers td.number code { font-family: Courier; }
+.payorc-module-wrapper table { color: #585A69; font-size: 12px; text-shadow: 0 1px 0 #FFFFFF;}
+.tabs *{z-index: 1;}
+.tabs nav a {text-decoration: none;display: block;}
+.content-wrap {z-index: 1;min-height: 455px;position: relative;padding-bottom: 7px !important;}
+.list-group-item {padding: 10px 15px !important;}
+.tabcbpfw-icon {width: 25px;height: 25px;font-size: 20px;margin-right: 10px;padding: 5px;text-align: center;}
+.payorc-module-wrapper form fieldset .tab { line-height: 2.5rem !important; }
+.payorc_settings .slide-button {background: #ef0000 !important;}
+.bootstrap .prestashop-switch input:first-of-type:checked~.slide-button {background: #72c279 !important;}
+
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media screen and (max-width: 768px) {
+    .table thead {
+        display: none;
+    }
+    
+    .table tbody tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+    
+    .table tbody td {
+        display: block;
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+    }
+    
+    .table tbody td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        font-weight: bold;
+        text-align: left;
+    }
+}

@@ -1,0 +1,420 @@
+/**
+* 2007-2025 PrestaShop
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Academic Free License (AFL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/afl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@prestashop.com so we can send you a copy immediately.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+* versions in the future. If you wish to customize PrestaShop for your
+* needs please refer to http://www.prestashop.com for more information.
+*
+*  @author    PrestaShop SA <contact@prestashop.com>
+*  @copyright 2007-2025 PrestaShop SA
+*  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*  International Registered Trademark & Property of PrestaShop SA
+*
+* Don't forget to prefix your containers with your own identifier
+* to avoid any conflicts with others containers.
+*/
+div.payment_module input[type=text],
+.PayOrcElement {
+  width: 100%;
+  box-sizing: border-box;
+  color: #32325d;
+  background-color: white;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px 0 #798a9d;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+div.payment_module input[type=text],#card-element,#iban-element {height: 36px;padding: 8px 10px; line-height:inherit;}
+
+div.payment_module input:focus,.PayOrcElement--focus {
+  box-shadow: 0 1px 3px 0 #1a2939;
+}
+
+.PayOrcElement--invalid {
+  border-color: #fa755a;
+}
+
+.PayOrcElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+#card-errors,#sepa-errors {
+    color: #fa755a;
+}
+
+#sepa-errors, #bank-name {
+    transform: translateY(4px);
+    transition: all 400ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+div.payment_module .form-row {max-width:445px;}
+
+.themodal-lock {
+    /* when modal is opened we're removing scrollbars from the main content */
+    overflow: hidden;
+}
+
+.themodal-overlay {
+    /* overlay will stay fixed and will take all the space available */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 99999;
+
+    /* if modal content doesn't fit inside the overlay, display scrollbars */
+    overflow: auto;
+
+    /* allow one-finger iPad scrolling */
+    -webkit-overflow-scrolling: touch;
+
+}
+
+
+/* fix for iPad glitches */
+.themodal-overlay > * {
+    -webkit-transform: translateZ(0px);
+}
+
+.themodal-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    /* IE6–IE8 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = #7F000000, endColorstr = #7F000000);
+    zoom: 1;
+}
+
+.payorc_logo{float: left;
+padding: 15px 20px 0px 0px;}
+.payorc_title {margin-top:10px;border-bottom: 1px solid #ccc;padding-bottom: 5px;}
+.payorc_title img { float: none; margin-right: 8px; margin-top: -5px; vertical-align: middle; }
+@media screen and (max-width: 500px) {
+.payorc_title img:last-child{display:none;}
+}
+label.card_line img{width: 40px;margin-top: -3px;}
+label.card_line {max-width: 445px;
+display: block !important;font-weight: normal;
+background: #f0f5f9;
+border-bottom: 1px solid #ccc;
+padding: 8px;
+margin: 0px;
+box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08); height:42px;}
+label.active {
+    background: #d9e5ee;
+}
+#payorc-payment-form,#payorc-sepa-form {padding-bottom:5px;}
+#payorc-payment-form .saved_cards{margin-bottom:6px;}
+#payorc-payment-form label,#payorc-sepa-form label { display: table-cell;font-size: 14px; font-weight: bold;text-align: left;}
+#payorc-sepa-button, #payorc-redirect-button, button#payorc-submit-button, #generate_new_btcrcvr {
+	position:relative;
+	display:inline-block;
+	box-sizing: border-box;
+	padding:8px 20px;
+	border:0px none;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 15px;
+	font-weight:bold;
+	color:#fff;
+	cursor: pointer;
+	/*background:transparent linear-gradient(#7DC5EE, #008CDD 85%, #30A2E4) repeat scroll 0% 0%;*/
+	background-color: #32325d;
+	text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+-moz-user-select: none;
+outline: 0px none;margin-top: 15px;
+	background-image: url('../img/secure-lock.png');
+	background-size: 13px 18px;
+	background-repeat: no-repeat;
+	background-position: 7px;
+	min-width:220px;
+}
+
+#payorc-sepa-button:hover, #payorc-redirect-button:hover, button#payorc-submit-button:hover {
+	
+	box-shadow: 0 7px 14px rgba(50, 50, 93, .10), 0 3px 6px rgba(0, 0, 0, .08);
+background-color: #43458b;
+}
+
+div.payorc-payment-errors,div.payorc-payment-errors-sepa,div.payorc-payment-errors-wechat {
+	margin: 0 0 10px 0;
+	padding: 10px;
+	border: 1px solid #900;
+	font-size: 13px;
+	background: #FCC;
+	display: none;
+}
+
+.expiration {width: 225px;}
+
+#payorc-translations, #payorc-ajax-loader, #payorc-ajax-loader-sepa, #payorc-ajax-loader-redirect, #payorc-ajax-loader-wechat, a#payorc_error { display: none; }
+ #payorc-ajax-loader, #payorc-ajax-loader-sepa, #payorc-ajax-loader-redirect, #payorc-ajax-loader-wechat { color:#398378; }
+#payorc-replace-card, #payorc-delete-card, #payorc-use-saved-card { border: none;display: inline;
+font-size: 13px; cursor:pointer;
+text-decoration: underline;
+text-transform: uppercase }
+
+.ps-payment-15 img.img-card {float:none;margin-bottom: -7px !important;  }
+.payorc-payment-16 {
+	display: block;
+	border: 1px solid #d6d4d4;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	line-height: 23px;
+	color: #333;
+	padding: 0px 10px 20px 15px;
+	position: relative;
+	margin-bottom:15px;
+	font-size: 16px;
+}
+
+.dsecure {
+        float: right !important;
+    border-radius: 12px;
+    height: 100px;
+}
+.powered_by_payorc {
+    float: right !important;
+    margin-top: -30px;
+}
+
+
+/* Convar changes */
+
+#result_3d {
+
+    background-color: #FFFFFF;
+    width: 100%;
+    max-width: 800px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+
+}
+
+#modal_payorc {
+	width: 600px;
+	margin: auto;
+	margin-top: 80px;
+	padding: 30px;
+	border-radius: 6px;
+	box-shadow: 0 5px 15px rgba(0,0,0,.5);
+	border: 1px solid rgba(0,0,0,.2);
+	-webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
+	background: white;
+	position:relative;
+	left:auto;
+	top:auto;
+}
+
+@media (max-width: 764px) {
+	#modal_payorc {
+		width: 90%;
+		margin: auto;
+		margin-top: 80px;
+		padding: 30px;
+		border-radius: 6px;
+		box-shadow: 0 5px 15px rgba(0,0,0,.5);
+		border: 1px solid rgba(0,0,0,.2);
+		-webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
+		background: white;
+	}
+}
+#modal_payorc_waiting, #modal-payorc-error, #sofort_available_countries, #klarna_pay_options {
+	height: 124px;
+	width: 400px;
+	background: white;
+	border-radius: 10px;
+	margin: 0 auto;
+	margin-top: 10%;
+	font-size: 16px;
+	padding: 28px;
+	border-radius: 6px;
+	box-shadow: 0 5px 15px rgba(0,0,0,.5);
+	border: 1px solid rgba(0,0,0,.2);
+	-webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
+}
+#klarna_pay_options,#sofort_available_countries {
+	height: 175px;
+}
+#klarna_pay_options div.title, #sofort_available_countries div.title{
+	margin-bottom: 10px;
+}
+#klarna_pay_options select, #sofort_available_countries select {
+	width: 130px;
+}
+#klarna_pay_options .btn, #sofort_available_countries .btn {
+	margin-top: 10px;
+	border-radius: 5px;
+}
+#payment-request-button { background-color:transparent !important; box-shadow:none !important;}
+#payorc-ajax-loader-europe {
+	text-align: center;
+}
+.payorc-wechat-payment img, .payorc-redirect-payments img, .sofort-payment img {
+	margin-right: 20px;
+	max-width:90px;
+}
+p.payorc-wechat-payment a, p.payorc-redirect-payments a{
+	padding: 15px 20px 15px 30px;
+	letter-spacing: 0px;
+	}
+.close {
+    opacity: 1;
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}
+.verified_payorc {
+	margin-left: 5px;
+    height: 24px;
+}
+#checkbox_reuse{
+	  margin:7px 0px;font-size: 13px;
+	}
+#checkbox_reuse > div{
+	  margin-right:7px;
+	  float:left;margin-top: 5px;
+	}
+#payorc-payment-form p.checkbox{
+margin:10px 0 0;width: auto;
+display: inline;
+	}
+#payorc-payment-form p.checkbox label{
+text-transform: none;
+font-weight:bold;
+display:inline-block !important;cursor: pointer;
+	}
+.prbutton-alert {font-size:13px; padding:5px;margin-bottom: 5px;}
+#mandate-acceptance {
+    margin-top: 8px;
+    font-size: 14px;
+    text-align: justify;
+	line-height: 20px;
+
+color: #918d8d;
+}
+.payorc-payment-17 {
+	border: 1px solid #d6d4d4;
+border-radius: 4px;
+padding: 10px 15px 5px 15px;
+background: #f3f3f3;margin: 10px 0 10px 2.5rem;
+display: inline-block; width: 100%;
+max-width: 500px;
+}
+.payment-option img {
+	height:auto !important;
+    max-height: 40px;
+}
+.pull-right{ float:right;}
+
+@media (max-width: 480px) {
+	div.payment_module input[type=text],
+.PayOrcElement {
+  box-sizing: border-box;
+  height: 30px;
+  padding: 5px;
+  font-size: 14px;
+}
+.ElementsApp, .ElementsApp .InputElement{ font-size:14px;}
+body#checkout section.checkout-step .payment-options label {
+    text-align: left;
+}
+.payorc-payment-17 {
+	padding: 5px;
+    margin: 0px;
+}
+label.card_line {
+    padding: 5px;
+    height: auto;
+}
+label.card_line img {
+    width: 35px;
+}
+}
+@-webkit-keyframes spinner-border {
+ to {
+  -webkit-transform:rotate(360deg);
+  transform:rotate(360deg)
+ }
+}
+@keyframes spinner-border {
+ to {
+  -webkit-transform:rotate(360deg);
+  transform:rotate(360deg)
+ }
+}
+.spinner-border {
+ display:inline-block;
+ width:3rem;
+ height:3rem;
+ vertical-align:middle;
+ border: 2px solid #398378;
+ border-right-color:#b5232300;
+ border-left-color:#b5232300;
+ border-radius:50%;margin-right: 5px;
+ -webkit-animation:spinner-border .60s linear infinite;
+ animation:spinner-border .60s linear infinite;
+}
+
+
+.modal {
+	display: none; 
+	position: fixed; 
+	z-index: 1000; 
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%; 
+	overflow: auto; 
+	background-color: rgb(0,0,0); 
+	background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+	background-color: #fefefe;
+	margin: 0 auto; 
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%; 
+}
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#payorc-loader {
+	position: fixed;
+	left: 48%;
+	top: 40%;
+}
+
+.payment-failure {
+	color : red;
+}
